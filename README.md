@@ -1,288 +1,303 @@
 # 💍 Keyur & Isha Wedding Invitation Website
 
-A beautiful, modern, mobile-responsive Gujarati wedding invitation website with MongoDB database integration and personalized voice greetings.
+A beautiful, modern, and fully responsive Gujarati wedding invitation website featuring personalized voice greetings, admin dashboard, and MongoDB database integration.
 
 ## ✨ Features
 
-- **🎨 8 Beautiful Pages**: Ganesh Sthapana, Couple Intro, Guest Welcome, Engagement, Wedding, Family, Venue, and RSVP
-- **🔗 Unique Shareable Links**: Generate personalized invitation links for each guest
-- **🎙️ Voice-over Greetings**: Auto-play personalized Gujarati voice greetings
-- **📱 Fully Responsive**: Optimized for mobile, tablet, and desktop
-- **✨ Smooth Animations**: Framer Motion animations throughout
-- **🎯 Admin Panel**: Password-protected dashboard to manage guests
-- **💾 MongoDB Database**: Store guest information and track views
-- **🚀 Vercel Ready**: One-click deployment to Vercel
+- **🎨 4-Page Beautiful Design**: Ganesh Invocation, Couple Introduction, Guest Information, and Cover Page
+- **🎙️ Voice-over Greetings**: Auto-playing personalized Gujarati voice greetings with multiple voice options
+- **🔄 Pre-recorded Audio**: Support for high-quality pre-recorded Gujarati greeting
+- **📱 Fully Responsive**: Optimized for mobile, tablet, and desktop devices
+- **✨ Smooth Animations**: Framer Motion animations and transitions throughout
+- **🔐 Password-Protected Admin Panel**: Secure dashboard to manage guest invitations
+- **💾 MongoDB Integration**: Store guest information and track invitation views
+- **🔗 Unique Shareable Links**: Generate personalized invitation URLs for each guest
+- **🌐 Deployment Ready**: Ready for Vercel deployment
 
 ## 🛠️ Tech Stack
 
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **Tailwind CSS**
-- **Framer Motion** (animations)
-- **MongoDB Atlas** (database)
-- **Mongoose** (ODM)
-- **Web Speech API** (voice-over)
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Modern styling framework
+- **Framer Motion** - Advanced animations
+- **MongoDB Atlas** - Cloud database
+- **Mongoose** - Object Data Modeling (ODM)
+- **Web Speech API** - Browser-based voice synthesis
+- **HTML5 Audio API** - Pre-recorded audio playback
 
 ## 📋 Prerequisites
 
-- Node.js 18+ installed
-- MongoDB Atlas account (free tier works)
+- Node.js 18.x or higher
+- MongoDB Atlas account (free tier available)
 - npm or yarn package manager
+- Vercel account (for deployment)
 
-## 🚀 Quick Start
+## 🚀 Installation & Setup
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+
+```bash
+git clone [your-repo-url]
+cd "newproejct"
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Setup Environment Variables
+### 3. Create Environment Variables
 
 Create a `.env.local` file in the root directory:
 
 ```env
 # MongoDB Connection String
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/wedding-invitations
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/wedding_invitations
 
-# Admin Panel Password
-ADMIN_PASSWORD=your_secure_password
-
-# Base URL (change for production)
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
+# Admin Panel Password (Set Your Secure Password)
+ADMIN_PASSWORD=your_secure_password_here
 ```
 
-### 3. Setup MongoDB Atlas
+### 4. Add Audio File
 
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a free account
-3. Create a new cluster (M0 Free tier)
-4. Click "Connect" → "Connect your application"
-5. Copy the connection string
-6. Replace `<password>` with your database password
-7. Paste into `.env.local` as `MONGODB_URI`
+Place your pre-recorded greeting audio file as `gretting.mp3` in:
+- `app/public/gretting.mp3` (for development)
+- `public/gretting.mp3` (for production)
 
-**Important**: Add `0.0.0.0/0` to Network Access for Vercel deployment:
-- Database Access → Add Database User
-- Network Access → Add IP Address → Allow Access from Anywhere
-
-### 4. Run Development Server
+### 5. Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the admin panel.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-## 📱 Usage
+## 📖 Usage
 
 ### Admin Panel
 
-1. Navigate to `/admin` (or root `/`)
-2. Enter your admin password (from `.env.local`)
-3. Add guests with their names
-4. Copy the generated invitation links
-5. Share links with guests via WhatsApp, SMS, or email
+1. Navigate to `/admin`
+2. Enter the admin password
+3. Add guests with:
+   - Guest name (Gujarati or English)
+   - Phone number (optional)
+   - Voice selection (Pre-recorded or browser voice)
+   - Custom message (optional, for browser voices only)
+4. Click "Create Invitation" to generate a unique invitation link
+5. Share the link with guests
 
 ### Guest Experience
 
-1. Guests open their unique link (`/invite/[uniqueId]`)
-2. Personalized voice greeting plays automatically
-3. Smooth scroll through 8 beautiful pages
-4. View all wedding details, venue, and family info
+1. Guest opens their unique invitation link
+2. Single-click overlay with Gujarati text appears
+3. Click overlay to:
+   - Play personalized voice greeting
+   - View the beautiful invitation cards
+4. Scroll through all 4 pages of the invitation
+5. Optional RSVP functionality available
 
-## 🎨 Customization
+### Voice Options
 
-### Wedding Details
-
-Edit the wedding information in these files:
-
-- **Dates & Times**: `components/invitation/Page1Ganesh.tsx`, `Page4Engagement.tsx`, `Page5Wedding.tsx`
-- **Couple Names**: `components/invitation/Page2CoupleIntro.tsx`
-- **Family Details**: `components/invitation/Page6Family.tsx`
-- **Venue Info**: `components/invitation/Page7Venue.tsx`
-- **Contact Numbers**: `components/invitation/Page8RSVP.tsx`
-
-### Colors & Fonts
-
-Modify colors in `tailwind.config.ts`:
-
-```typescript
-colors: {
-  wedding: {
-    gold: '#FFD700',
-    darkGold: '#B8860B',
-    maroon: '#800020',
-    cream: '#FFF8DC',
-    rose: '#C9A07C',
-    burgundy: '#6B1529',
-  }
-}
-```
-
-Fonts are configured in `app/globals.css`.
-
-### Voice-over Message
-
-Edit the greeting template in `lib/voiceover.ts`:
-
-```typescript
-generateGreeting(guestName: string): string {
-  return `નમસ્તે ${guestName}, આપનું કેયુર અને ઈશાના લગ્નમાં હાર્દિક સ્વાગત છે...`;
-}
-```
-
-## 🚀 Deployment to Vercel
-
-### Option 1: Deploy with Vercel CLI
-
-```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Login to Vercel
-vercel login
-
-# Deploy
-vercel --prod
-```
-
-### Option 2: Deploy via GitHub
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Click "Import Project"
-4. Select your GitHub repository
-5. Add environment variables:
-   - `MONGODB_URI`
-   - `ADMIN_PASSWORD`
-   - `NEXT_PUBLIC_BASE_URL` (your Vercel URL)
-6. Click "Deploy"
-
-### Post-Deployment
-
-1. Update `NEXT_PUBLIC_BASE_URL` in Vercel environment variables with your production URL
-2. Redeploy to apply changes
-3. Test the admin panel and create a test invitation
+- **🎙️ Pre-recorded Gujarati**: High-quality pre-recorded greeting (constant quality)
+- **🗣️ Browser Voices**: Multiple device voices (Google, Siri, etc.)
+  - Gujarati voices (best quality)
+  - Hindi voices (good fallback)
+  - Other Indian language voices
+  - Generic voices (last resort)
 
 ## 📂 Project Structure
 
 ```
-wedding-invitation/
+newproejct/
 ├── app/
-│   ├── admin/
-│   │   └── page.tsx              # Admin dashboard
-│   ├── invite/[slug]/
-│   │   └── page.tsx              # Dynamic invitation page
-│   ├── api/
-│   │   ├── admin/                # Admin API routes
-│   │   └── invitation/           # Guest API routes
-│   ├── layout.tsx                # Root layout
-│   ├── page.tsx                  # Home page (redirects to admin)
-│   └── globals.css               # Global styles
+│   ├── admin/                 # Admin dashboard
+│   ├── invite/[slug]/        # Guest invitation pages
+│   ├── api/                  # API routes
+│   │   ├── admin/            # Admin API endpoints
+│   │   └── invitation/       # Invitation API endpoints
+│   └── page.tsx              # Home page
 ├── components/
-│   ├── invitation/               # 8 invitation page components
-│   ├── admin/                    # Admin panel components
-│   └── ui/                       # Reusable UI components
+│   ├── invitation/           # Invitation page components
+│   │   ├── Page1Ganesh.tsx
+│   │   ├── Page2MangalParivar.tsx
+│   │   ├── Page3VigataHostInfo.tsx
+│   │   └── Page4ShubhvichaarCover.tsx
+│   ├── admin/                # Admin panel components
+│   │   ├── GuestForm.tsx
+│   │   ├── GuestList.tsx
+│   │   └── CopyButton.tsx
+│   └── ui/                   # Reusable UI components
 ├── lib/
-│   ├── mongodb.ts                # Database connection
-│   ├── utils.ts                  # Utility functions
-│   └── voiceover.ts              # Voice-over service
+│   ├── voiceover.ts         # Voice-over service
+│   ├── mongodb.ts           # Database connection
+│   └── utils.ts             # Utility functions
 ├── models/
-│   └── Invitation.ts             # MongoDB schema
-└── public/                       # Static assets
+│   └── Invitation.ts        # MongoDB schema
+├── public/
+│   ├── gretting.mp3         # Pre-recorded audio
+│   └── [images]/            # Wedding card images
+└── README.md
 ```
 
 ## 🔐 Security
 
-- Admin panel is password-protected
+- Admin password required for dashboard access
+- Password persistence using localStorage (development only)
+- Authentication headers on API requests
 - Environment variables for sensitive data
-- MongoDB connection with authentication
-- API routes validate admin password
+- MongoDB connection string stored securely
 
-**Important**: Use a strong password for `ADMIN_PASSWORD`!
+## 🌐 Deployment to Vercel
 
-## 📱 Mobile Optimization
+### Easy Deployment (Recommended)
 
-- Responsive design with Tailwind CSS
-- Touch-friendly buttons and navigation
-- Optimized animations for mobile
-- Fast loading with Next.js optimization
+1. Push code to GitHub
+2. Visit [Vercel.com](https://vercel.com)
+3. Click "New Project" and select your repository
+4. Add environment variables:
+   - `MONGODB_URI`
+   - `ADMIN_PASSWORD`
+5. Click "Deploy"
 
-## 🎯 Key Features Explained
+### Manual Deployment
 
-### Unique Invite Links
-
-Each guest gets a unique URL like:
+```bash
+npm install -g vercel
+vercel  # Follow the prompts
 ```
-https://yourdomain.vercel.app/invite/abc123def456
-```
 
-Links are generated using timestamps and random strings for security.
+## 🎵 Voice Features
 
-### Voice-over
+### Browser Voice Support
 
-- Uses Web Speech API for browser-native text-to-speech
-- Tries to use Gujarati/Hindi voice if available
-- Falls back to default browser voice
-- Auto-plays on page load (with user interaction requirement)
+The system intelligently selects the best available voice based on:
+1. **Language Priority**: Gujarati > Hindi > Indian Languages > Others
+2. **Quality Filtering**: Removes low-quality voices
+3. **Gender Detection**: Shows voice gender indicators
+4. **Test Playback**: Test any voice before creating invitations
 
-### View Tracking
+### Pre-recorded Audio
 
-- Automatically tracks when a guest views their invitation
-- Admin can see "Viewed" status and timestamp
-- Helps track RSVPs and engagement
+- Upload your custom greeting as `gretting.mp3`
+- Supports MP3 format
+- High-quality audio recommended
+- Works on all devices
 
 ## 🐛 Troubleshooting
 
-### MongoDB Connection Error
+### Database Connection Issues
 
-- Verify your connection string in `.env.local`
-- Check MongoDB Atlas Network Access allows your IP
-- Ensure database user has read/write permissions
+```
+Error: Failed to connect to MongoDB
+```
 
-### Voice-over Not Working
+Check your `MONGODB_URI` in `.env.local` and ensure:
+- Credentials are correct
+- IP address is whitelisted in MongoDB Atlas
+- Network connectivity is available
 
-- Voice-over requires user interaction in some browsers
-- Check browser console for errors
-- Ensure HTTPS for production (Vercel provides this)
+### Admin Password Not Working
 
-### Admin Login Not Working
+- Clear browser localStorage: `localStorage.clear()`
+- Hard refresh the page: `Ctrl+Shift+Delete`
+- Verify password in `.env.local` matches
 
-- Verify `ADMIN_PASSWORD` is set in `.env.local`
-- Clear browser cache and cookies
-- Check browser console for API errors
+### Voice Not Playing
+
+- Check browser supports Web Speech API (not supported in IE)
+- Verify `gretting.mp3` is in `public/` folder
+- Check browser console for error messages
+- Try a different browser
+
+### Pre-recorded Audio Cuts Off
+
+- Ensure audio file is not corrupted
+- Use a shorter greeting (< 2 minutes)
+- Check file format is MP3
+- Verify file size is reasonable
+
+## 📱 Browser Support
+
+| Browser | Support |
+|---------|---------|
+| Chrome  | ✅ Full |
+| Firefox | ✅ Full |
+| Safari  | ✅ Full |
+| Edge    | ✅ Full |
+| IE 11   | ❌ No   |
+
+## 🎨 Customization
+
+### Colors
+
+Edit `tailwind.config.ts` for wedding color scheme:
+
+```typescript
+colors: {
+  'wedding-maroon': '#800020',
+  'wedding-burgundy': '#6B1B1B',
+  'wedding-gold': '#FFD700',
+  'wedding-cream': '#FFF8DC',
+}
+```
+
+### Gujarati Content
+
+Edit the component files to customize:
+- Guest names
+- Family information
+- Event dates and times
+- Venue details
+- Contact information
+
+### Animations
+
+Adjust animation timings in component `transition` props:
+
+```tsx
+transition={{ duration: 1, delay: 0.2 }}
+```
+
+## 📊 Analytics
+
+Track invitations viewed in MongoDB:
+- Guest name
+- Unique slug
+- View count
+- View timestamp
+- Phone number (optional)
+
+## 🤝 Contributing
+
+To contribute improvements:
+
+1. Create a feature branch
+2. Make your changes
+3. Test locally
+4. Create a pull request
+
+## 📄 License
+
+This project is private and created specifically for the Keyur & Isha wedding.
 
 ## 📞 Support
 
-For questions or issues:
-- Check the code comments
-- Review MongoDB Atlas documentation
-- Check Next.js 14 documentation
+For issues or questions:
+- Check console logs (F12 in browser)
+- Review MongoDB connection
+- Verify environment variables
+- Test in different browser
 
-## 🎊 Wedding Details
+## 🎉 Acknowledgments
 
-**Couple**: Keyur & Isha
-
-**Events**:
-- Ganesh Sthapana: Sunday, 23rd February 2025, 4:00 PM
-- Engagement: Monday, 24th February 2025, 6:30 PM
-- Wedding: Tuesday, 25th February 2025, 9:00 PM
-
-**Venue**: Navneet Lawns, Ahmedabad
-
-## 📝 License
-
-This project is created for personal use for Keyur & Isha's wedding.
-
-## 🙏 Credits
-
-Built with ❤️ using Next.js, Tailwind CSS, and Framer Motion.
+- Framer Motion for smooth animations
+- Next.js team for the amazing framework
+- MongoDB for reliable database
+- Vercel for seamless deployment
 
 ---
 
-**Made with love for Keyur & Isha's Special Day** 💑✨
+**Made with ❤️ for Keyur & Isha's Wedding**
 
-#ShubhVivah #KeyurWeedsIsha
-#   W e d d i n g M o n a r c h  
- 
+Last Updated: February 2026
