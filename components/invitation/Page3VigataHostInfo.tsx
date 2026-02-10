@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { PageTransition } from '@/components/ui/PageTransition';
-import { WeddingCardBackground } from '@/components/ui/WeddingCardBackground';
 
 export function Page3VigataHostInfo() {
   const sections = [
@@ -54,7 +53,10 @@ export function Page3VigataHostInfo() {
 
   return (
     <PageTransition>
-      <WeddingCardBackground variant="maroon">
+      <div
+        className="w-full h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
+        style={{ backgroundImage: "url('/page-3.png')" }}
+      >
         <div className="h-full flex items-center justify-center p-1 md:p-2 relative overflow-hidden">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -69,7 +71,7 @@ export function Page3VigataHostInfo() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <p className="font-gujarati text-xs md:text-sm text-gray-600">
+                <p className="font-gujarati text-xs md:text-sm text-white">
                   ॥ શ્રી દાળેશ્વરાય નમઃ ॥
                 </p>
               </motion.div>
@@ -80,8 +82,8 @@ export function Page3VigataHostInfo() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
               >
-                <h1 className="font-gujarati text-lg md:text-2xl font-bold text-wedding-maroon drop-shadow-lg">
-                  ધાર્મિક વિધિ અને પરિવાર
+                <h1 className="font-gujarati text-lg md:text-2xl font-bold text-yellow-200 drop-shadow-lg">
+                  પરિવાર
                 </h1>
               </motion.div>
 
@@ -90,7 +92,7 @@ export function Page3VigataHostInfo() {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="w-20 h-px bg-wedding-darkGold mx-auto my-0.5"
+                className="w-20 h-px bg-yellow-300 mx-auto my-0.5"
               />
 
               {sections.map((section, sectionIndex) => (
@@ -101,11 +103,11 @@ export function Page3VigataHostInfo() {
                   transition={{ delay: 0.7 + sectionIndex * 0.2, duration: 0.6 }}
                   className="space-y-0.5 md:space-y-1"
                 >
-                  <p className="font-gujarati text-xs md:text-sm font-semibold text-wedding-maroon">
+                  <p className="font-gujarati text-xs md:text-sm font-semibold text-yellow-200">
                     {section.title}
                   </p>
                   {section.lines.map((line) => (
-                    <p key={line} className="font-gujarati text-xs md:text-sm text-gray-700">
+                    <p key={line} className="font-gujarati text-xs md:text-sm text-white">
                       {line}
                     </p>
                   ))}
@@ -113,38 +115,8 @@ export function Page3VigataHostInfo() {
               ))}
             </div>
           </motion.div>
-
-          {/* Dual Animated Peacocks at Bottom */}
-          <motion.div
-            initial={{ x: -150, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1.3, duration: 1.2, type: "spring", stiffness: 50 }}
-            className="absolute bottom-4 left-4 md:left-8 z-10"
-          >
-            <motion.img
-              src="/more-200h.png"
-              alt="Peacock"
-              className="w-16 md:w-24 h-auto drop-shadow-2xl"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ x: 150, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1.3, duration: 1.2, type: "spring", stiffness: 50 }}
-            className="absolute bottom-4 right-4 md:right-8 z-10"
-          >
-            <motion.img
-              src="/more-200h.png"
-              alt="Peacock"
-              className="w-16 md:w-24 h-auto drop-shadow-2xl -scale-x-100"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
         </div>
-      </WeddingCardBackground>
+      </div>
     </PageTransition>
   );
 }

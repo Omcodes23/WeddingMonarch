@@ -149,17 +149,17 @@ export default function InvitationPage() {
 
       {/* Invitation Pages - 4 Page Traditional Structure */}
       <div className="overflow-x-hidden">
-        {/* Page 1: Mangal Avsar - Traditional Ceremonies */}
+        {/* Page 4: Cover/Front Page */}
+        <Page4ShubhvichaarCover guestName={guestData.guestName} />
+        
+        {/* Page 1: Ganesh - Ceremonies */}
         <Page1Ganesh />
         
         {/* Page 2: Mangal Parivar - Couple & Family */}
         <Page2MangalParivar />
         
-        {/* Page 3: Details & Host Information */}
+        {/* Page 3: Family Information */}
         <Page3VigataHostInfo />
-        
-        {/* Page 4: Shubhvichaar - Cover/Front Page */}
-        <Page4ShubhvichaarCover guestName={guestData.guestName} />
       </div>
 
       {/* Scroll Progress Indicator */}
