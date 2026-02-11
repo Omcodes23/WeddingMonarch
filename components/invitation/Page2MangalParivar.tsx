@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { PageTransition } from '@/components/ui/PageTransition';
 
@@ -56,7 +57,17 @@ export function Page2MangalParivar({ guestName }: Page2Props) {
             transition={{ duration: 1, delay: 0.2 }}
             className="w-full h-full flex flex-col justify-start"
           >
-            <div className="px-2 md:px-4 py-2 md:py-3 text-center space-y-1 md:space-y-1.5 overflow-y-auto max-h-full w-full flex flex-col items-center">
+            <div className="relative px-2 md:px-4 py-2 md:py-3 text-center space-y-1 md:space-y-1.5 overflow-y-auto max-h-full w-full flex flex-col items-center">
+              <div className="absolute inset-x-0 top-4 bottom-0 pointer-events-none">
+                <Image
+                  src="/img2.png"
+                  alt="watermark"
+                  fill
+                  sizes="100vw"
+                  className="object-cover opacity-20"
+                />
+              </div>
+              <div className="relative z-10 w-full flex flex-col items-center">
               
               <motion.div
                 initial={{ opacity: 0 }}
@@ -207,6 +218,7 @@ export function Page2MangalParivar({ guestName }: Page2Props) {
                   </p>
                 ))}
               </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>

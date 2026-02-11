@@ -264,17 +264,7 @@ export class VoiceOverService {
   speak(options: VoiceOverOptions): Promise<void> {
     return new Promise(async (resolve, reject) => {
       try {
-        const voiceName = options.voiceName;
-
-        await this.playAudioFile('/oneplay.mp4');
-
-        if (voiceName === 'PRE_RECORDED') {
-          await this.playAudioFile('/gretting.mp3');
-        } else {
-          await this.speakWithSynthesis(options);
-        }
-
-        await this.playAudioFile('/twoplay.mp4');
+        await this.playAudioFile('/final.mp4');
         resolve();
       } catch (error) {
         console.error('❌ Unexpected error in speak():', error);

@@ -81,8 +81,11 @@ export function Page4ShubhvichaarCover({ guestName }: Page4Props) {
                 transition={{ delay: 1.1, duration: 0.6 }}
                 className="space-y-0.5 md:space-y-1 pt-1 md:pt-4"
               >
-                <h2 className="font-gujarati text-lg md:text-4xl font-bold text-white">
-                  ચિ. કેયુર  ||  ચિ. ઈશા
+                <h2
+                  className="font-decorative text-2xl md:text-5xl font-extrabold text-red-600 drop-shadow-lg tracking-wide"
+                  style={{ textShadow: '0 2px 6px rgba(185, 28, 28, 0.55), 0 4px 10px rgba(255, 215, 0, 0.45)' }}
+                >
+                  ચિ. કેયુર <span className="text-base md:text-2xl font-semibold">સંગ</span> ચિ. ઈશા
                 </h2>
               </motion.div>
 
