@@ -152,11 +152,11 @@ export default function InvitationPage() {
         {/* Page 4: Cover/Front Page */}
         <Page4ShubhvichaarCover guestName={guestData.guestName} />
         
+        {/* Page 2: Mangal Parivar - Couple & Family */}
+        <Page2MangalParivar guestName={guestData.guestName} />
+        
         {/* Page 1: Ganesh - Ceremonies */}
         <Page1Ganesh />
-        
-        {/* Page 2: Mangal Parivar - Couple & Family */}
-        <Page2MangalParivar />
         
         {/* Page 3: Family Information */}
         <Page3VigataHostInfo />

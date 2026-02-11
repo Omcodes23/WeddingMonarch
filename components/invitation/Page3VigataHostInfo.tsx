@@ -57,7 +57,7 @@ export function Page3VigataHostInfo() {
         className="w-full h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
         style={{ backgroundImage: "url('/page-3.png')" }}
       >
-        <div className="h-full flex items-center justify-center p-1 md:p-2 relative overflow-hidden">
+        <div className="h-full flex items-center justify-center p-2 md:p-2 relative overflow-hidden overflow-y-auto">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

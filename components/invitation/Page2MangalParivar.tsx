@@ -3,7 +3,11 @@
 import { motion } from 'framer-motion';
 import { PageTransition } from '@/components/ui/PageTransition';
 
-export function Page2MangalParivar() {
+interface Page2Props {
+  guestName?: string;
+}
+
+export function Page2MangalParivar({ guestName }: Page2Props) {
   const introLines = [
     'આદરણીય સ્નેહીશ્રી:',
     'ઇષ્ટદેવશ્રી દાળેશ્વર દાદા, કુળદેવીશ્રી બ્રહ્માણી માતાજી, શ્રી રાંદલ માતાજી તથા સુરાપુરા દાદાની અશીમ કૃપાવર્ષા અને આત્મીયજનોના આશીર્વાદરૂપ મંગલમય સાન્નિધ્યમાં, અમારાં લાડકવાયા',
@@ -45,7 +49,7 @@ export function Page2MangalParivar() {
         className="w-full h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
         style={{ backgroundImage: "url('/page-2.png')" }}
       >
-        <div className="h-full flex items-start justify-start pt-2 md:pt-3 p-1 md:p-2 relative overflow-hidden">
+        <div className="h-full flex items-start justify-start pt-2 md:pt-3 p-2 md:p-2 relative overflow-hidden overflow-y-auto">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -82,7 +86,10 @@ export function Page2MangalParivar() {
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
                 <div className="space-y-0.5">
-                  {introLines.map((line) => (
+                  <p className="font-gujarati text-xs md:text-sm text-white px-2">
+                    આદરણીય સ્નેહીશ્રી: <span className="text-yellow-200 font-bold">{guestName || 'અતિથિ'}</span>
+                  </p>
+                  {introLines.slice(1).map((line) => (
                     <p key={line} className="font-gujarati text-xs md:text-sm text-white px-2">
                       {line}
                     </p>
